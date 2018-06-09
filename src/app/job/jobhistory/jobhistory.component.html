@@ -1,0 +1,45 @@
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+    <h1> Job Lists  </h1>
+    <p *ngIf="!jobhistories"><em>Loading...</em></p>
+    <table class='table' *ngIf="jobhistories">
+    <!--<table class='table' >-->
+      <thead>
+          <tr>
+              <th>JobName</th>
+              <th>LastRunDateTime</th>
+              <th>LastRunStatus</th>
+              <th>LastRunDuration</th>
+              <th>LastRunStatusMessage</th>
+              <th>NextRunDateTime</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let jobhistory of jobhistories | paginate: { itemsPerPage:10, currentPage: p }">
+              <td>{{ jobhistory.jobName }}</td>
+              <td>{{ jobhistory.lastRunDateTime }}</td>
+              <td>{{ jobhistory.lastRunStatus }}</td>
+              <td>{{ jobhistory.lastRunDuration}}</td>
+              <td>{{ jobhistory.lastRunStatusMessage }}</td>
+              <td>{{ jobhistory.nextRunDateTime }}</td>
+          </tr>
+      </tbody>
+  </table>
+  <pagination-controls (pageChange)="p =$event"></pagination-controls>
+  </div>
+  
+  <div [hidden]="true">  
+  <h2>Here are some links to help you start: </h2>
+  <ul >
+    <li>
+      <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+    </li>
+    <li>
+      <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
+    </li>
+    <li>
+      <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+    </li>
+  </ul>
+  </div>
